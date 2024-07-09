@@ -6,7 +6,7 @@ import { BadRequestException } from '../../core/exceptions';
 
 @Injectable()
 export class TodosService {
-  constructor(private prismaService: PrismaService) { }
+  constructor(private prismaService: PrismaService) {}
 
   async create(createTodoDto: CreateTodoDto) {
     try {
@@ -24,19 +24,16 @@ export class TodosService {
 
   async findAll() {
     try {
-
       const todos = await this.prismaService.todo.findMany();
 
       return todos;
     } catch (error) {
-      throw new InternalServerErrorException('can\'t fetch todos');
+      throw new InternalServerErrorException("can't fetch todos");
     }
-
   }
 
   async findOne(id: string) {
     try {
-
       const todo = await this.prismaService.todo.findUnique({
         where: {
           id: id,
@@ -45,9 +42,8 @@ export class TodosService {
 
       return todo;
     } catch (error) {
-      throw new BadRequestException('id not found')
+      throw new BadRequestException('id not found');
     }
-
   }
 
   async update(id: string, updateTodoDto: UpdateTodoDto) {

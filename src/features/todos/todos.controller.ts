@@ -13,7 +13,7 @@ import { UpdateTodoDto } from './dto/update-todo.dto';
 
 @Controller('todos')
 export class TodosController {
-  constructor(private readonly todosService: TodosService) { }
+  constructor(private readonly todosService: TodosService) {}
 
   @Post()
   async create(@Body() createTodoDto: CreateTodoDto) {
