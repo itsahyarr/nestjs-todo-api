@@ -26,8 +26,8 @@ services:
       - 27022:27017
     restart: always
     volumes:
-      - ./rs-keyfile:/etc/rs-keyfile
-      - ./mongod.conf:/etc/mongod.conf
+      # - ./rs-keyfile:/etc/rs-keyfile
+      # - ./mongod.conf:/etc/mongod.conf
     depends_on:
       - todo-api-dev-mongodb3
     command: "--replSet rs0 --bind_ip_all"
@@ -42,8 +42,8 @@ services:
       - 27023:27017
     restart: always
     volumes:
-      - ./rs-keyfile:/etc/rs-keyfile
-      - ./mongod.conf:/etc/mongod.conf
+      # - ./rs-keyfile:/etc/rs-keyfile
+      # - ./mongod.conf:/etc/mongod.conf
     command: "--replSet rs0 --bind_ip_all"
 
 networks:
