@@ -14,8 +14,8 @@ datasource db {
 }
 
 type Extra {
-  tags        String[]
-  description String
+  tags        String[] @default([])
+  description String?
 }
 
 model Todo {
@@ -23,7 +23,9 @@ model Todo {
   title     String
   completed Boolean
   priority  String
-  extra     Extra
+  extra     Extra?
+  date      String
+  time      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

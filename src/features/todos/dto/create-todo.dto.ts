@@ -29,4 +29,12 @@ export class CreateTodoDto {
 
   @IsOptional()
   readonly extra: Extra;
+
+  @IsString()
+  @IsNotEmpty()
+  readonly date: string;
+
+  @IsString()
+  @IsNotEmpty()
+  readonly time: string;
 }

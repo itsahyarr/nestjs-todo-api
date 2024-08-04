@@ -3,11 +3,8 @@ import { INestApplication } from '@nestjs/common';
 import { AppModule } from './../src/app.module';
 import * as pactum from 'pactum';
 import { PrismaService } from '../src/core/prisma/prisma.service';
-import { after, describe } from 'node:test';
-import {
-  CreateTodoDto,
-  Extra,
-} from '../src/features/todos/dto/create-todo.dto';
+import { describe } from 'node:test';
+import { CreateTodoDto } from '../src/features/todos/dto/create-todo.dto';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
@@ -42,6 +39,8 @@ describe('AppController (e2e)', () => {
         description: 'new todo list description',
         tags: ['tag1', 'tag2'],
       },
+      date: '',
+      time: '',
     };
 
     describe('Create todo', () => {
@@ -65,7 +64,7 @@ describe('AppController (e2e)', () => {
           .expectStatus(200)
           .inspect()
           .expectJsonLike({ data: [] })
-          .expectJsonLength('data', 1)
+          .expectJsonLength('data', 1);
       });
     });
 
@@ -101,7 +100,7 @@ describe('AppController (e2e)', () => {
           .spec()
           .delete('/todos/{id}')
           .withPathParams('id', '$S{todoId}')
-          .expectJsonLike({ "data": {} })
+          .expectJsonLike({ data: {} })
           .expectStatus(200)
           .inspect();
       });
@@ -116,7 +115,6 @@ describe('AppController (e2e)', () => {
           .expectStatus(200)
           .inspect();
       });
-
     });
   });
 });
